@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>1-Second Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .box {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+
+<h1>⏱️ 1-Second Challenge</h1>
+
+<!-- AD PLACEHOLDER (TOP BANNER) -->
+<div style="margin:15px 0; background:#334155; padding:10px;">
+  Ad Banner Here
+</div>
+
+<div class="box">
+  <h2 id="time">0.00</h2>
+  <button onclick="start()">START</button>
+  <button onclick="stop()">STOP</button>
+  <p id="result"></p>
+</div>
+
+<!-- AD PLACEHOLDER (BOTTOM BANNER) -->
+<div style="margin:15px 0; background:#334155; padding:10px;">
+  Ad Banner Here
+</div>
+
+<script>
+let startTime, interval;
+
+function start() {
+  startTime = Date.now();
+  interval = setInterval(() => {
+    let t = (Date.now() - startTime) / 1000;
+    document.getElementById("time").innerText = t.toFixed(2);
+  }, 10);
+}
+
+function stop() {
+  clearInterval(interval);
+  let t = (Date.now() - startTime) / 1000;
+  let diff = Math.abs(1 - t).toFixed(3);
+  document.getElementById("result").innerText =
+    "You were off by " + diff + " seconds";
+}
+</script>
+
+</body>
+</html>
